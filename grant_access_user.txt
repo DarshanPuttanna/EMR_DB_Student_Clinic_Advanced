@@ -1,0 +1,42 @@
+DROP USER IF EXISTS 'uscadmin'@'localhost' ;
+DROP USER IF EXISTS 'doctor'@'localhost';
+DROP USER IF EXISTS 'pharmacist'@'localhost';
+
+
+CREATE USER 'uscadmin'@'localhost' IDENTIFIED BY 'uscadmin123456';
+CREATE USER 'doctor'@'localhost' IDENTIFIED BY 'doctor123456';
+CREATE USER 'pharmacist'@'localhost' IDENTIFIED BY 'pharmacist123456';
+
+set password for 'uscadmin'@'localhost' = '123456';
+set password for 'doctor'@'localhost' = '123456';
+set password for 'pharmacist'@'localhost' = '123456';
+
+
+GRANT ALL ON university_student_clinic.* TO 'uscadmin'@'localhost';
+
+
+GRANT SELECT ON university_student_clinic.appointments TO 'doctor'@'localhost';
+GRANT SELECT ON university_student_clinic.billing_info TO 'doctor'@'localhost';
+GRANT SELECT,INSERT, UPDATE ON university_student_clinic.checkup TO 'doctor'@'localhost';
+GRANT SELECT,INSERT, UPDATE ON university_student_clinic.doctors TO 'doctor'@'localhost';
+GRANT SELECT,INSERT, UPDATE ON university_student_clinic.doctor_schedule TO 'doctor'@'localhost';
+GRANT SELECT ON university_student_clinic.medicene TO 'doctor'@'localhost';
+GRANT SELECT ON university_student_clinic.patients TO 'doctor'@'localhost';
+GRANT SELECT, INSERT, UPDATE, DELETE ON university_student_clinic.prescription TO 'doctor'@'localhost';
+GRANT SELECT ON university_student_clinic.procedure_list TO 'doctor'@'localhost';
+GRANT SELECT ON university_student_clinic.symptoms TO 'doctor'@'localhost';
+GRANT SELECT ON university_student_clinic.appointmentdetails_view TO 'doctor'@'localhost';
+GRANT SELECT ON university_student_clinic.employee_view TO 'doctor'@'localhost';
+
+
+
+GRANT SELECT,INSERT, UPDATE, DELETE ON university_student_clinic.inventory TO  'pharmacist'@'localhost';
+GRANT SELECT,INSERT, UPDATE, DELETE ON university_student_clinic.medicene TO  'pharmacist'@'localhost';
+GRANT SELECT ON university_student_clinic.checkup TO  'pharmacist'@'localhost';
+GRANT SELECT ON university_student_clinic.stock_remaining_view TO  'pharmacist'@'localhost';
+GRANT SELECT ON university_student_clinic.patient_checkup_view TO  'pharmacist'@'localhost';
+
+
+
+
+
